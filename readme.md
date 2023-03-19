@@ -2,6 +2,9 @@
 
 Este proyecto de geolocalización GPS fue desarrollado como tesis universitaria por estudiantes de la Universidad Experimental Politécnica Antonio José de Sucre Vicerectorado Puerto Ordaz. El objetivo del proyecto es crear un sistema eficiente de seguimiento de vehículos y objetos en tiempo real.
 
+## Pagina Web
+[Pagina Web](https://yarlyn28.github.io/gps-web/)
+
 ## Descripción del Proyecto
 
 El proyecto se basa en el uso de Arduino como plataforma de hardware y el módulo SIM7000G NB-IoT HAT para la comunicación de datos a través de la red celular. La plataforma de IoT ThingSpeak es utilizada para almacenar los datos y visualizarlos en tiempo real en una interfaz amigable.
@@ -11,10 +14,3 @@ Nuestro sistema de geolocalización GPS utiliza señales satelitales para determ
 ## Objetivos
 
 El objetivo de este proyecto es proporcionar una solución eficiente y fácil de usar para la geolocalización de vehículos y objetos en tiempo real. Nuestro sistema tiene aplicaciones en una amplia variedad de industrias, desde la logística hasta la seguridad pública y la gestión de flotas.
-
-## Contacto
-
-Si está interesado en obtener más información sobre nuestro proyecto de geolocalización GPS con Arduino,
-
-
-[Pagina Web](https://yarlyn28.github.io/gps-web/)
