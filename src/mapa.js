@@ -25,7 +25,7 @@ function getFechas(localizaciones) {
 }
 
 function mostrarMapa(feeds) {
-  const map = L.map("map", { center: feeds[0].localizacion, zoom: 13 });
+  const map = L.map("map", { center: feeds[0].localizacion });
 
   const tiles = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     maxZoom: 19,

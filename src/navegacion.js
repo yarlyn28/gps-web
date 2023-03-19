@@ -10,12 +10,14 @@ const acerca = document.getElementById("acerca");
 const OCULTAR = "d-none";
 const ACTIVADO = "active";
 
-let paginaActual = "acerca";
-pluginMapa.classList.toggle(OCULTAR);
-pluginMapaSeparador.classList.toggle(OCULTAR);
-mapa.classList.toggle(OCULTAR);
+let paginaActual = "mapa";
+//pluginMapa.classList.toggle(OCULTAR);
+//pluginMapaSeparador.classList.toggle(OCULTAR);
+//mapa.classList.toggle(OCULTAR);
+acerca.classList.toggle(OCULTAR);
 
-acercaLink.classList.add(ACTIVADO);
+
+mapaLink.classList.add(ACTIVADO);
 
 acercaLink.addEventListener("click", () => {
   if (paginaActual == "acerca") return;

@@ -1,5 +1,5 @@
 const URL = () =>
-  " https://api.thingspeak.com/channels/2036096/feeds.json?api_key=HTR3SJUGSFO7LF8T&timezone=America/Caracas";
+  " https://api.thingspeak.com/channels/2036096/feeds.json?api_key=HTR3SJUGSFO7LF8T&timezone=America/Caracas&results=8000";
 
 var localizaciones = [];
 
