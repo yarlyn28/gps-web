@@ -1,4 +1,6 @@
-function inicializarWidgetCalendario(data) {
+import { ON_ActualizarLocalizaciones } from './eventos'
+
+export function inicializarWidgetCalendario(data) {
   const yearSelect = document.getElementById("select-year");
   const monthSelect = document.getElementById("select-month");
   const daySelect = document.getElementById("select-day");

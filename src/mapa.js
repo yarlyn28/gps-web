@@ -1,31 +1,7 @@
-function getFechas(localizaciones) {
-  const feedsAgrupadas = {};
-  localizaciones.forEach((feed) => {
-    const date = moment(feed.created_at);
-    const año = date.year();
-    const mes = date.month() + 1;
-    const dia = date.date();
-    console.log({ date, año, mes });
+import leaflet from 'leaflet'
+import moment from 'moment';
 
-    if (!feedsAgrupadas[año]) {
-      feedsAgrupadas[año] = {};
-    }
-
-    if (!feedsAgrupadas[año][mes]) {
-      feedsAgrupadas[año][mes] = {};
-    }
-
-    if (!feedsAgrupadas[año][mes][dia]) {
-      feedsAgrupadas[año][mes][dia] = [];
-    }
-
-    feedsAgrupadas[año][mes][dia].push(feed);
-  });
-  console.log({ groupedFeeds: feedsAgrupadas });
-  return feedsAgrupadas;
-}
-
-function mostrarMapa(feeds) {
+export function mostrarMapa(feeds) {
   const map = L.map("map", { center: feeds[0].localizacion });
 
   const tiles = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {

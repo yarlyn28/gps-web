@@ -1,3 +1,9 @@
+import "./style.css";
+import "bootstrap"
+
+import { agruparFeedsPorFechas } from './src/fechasUtils'
+import { inicializarWidgetCalendario } from "./src/widgetCalendario";
+
 const URL = () =>
   " https://api.thingspeak.com/channels/2036096/feeds.json?api_key=HTR3SJUGSFO7LF8T&timezone=America/Caracas&results=8000";
 
@@ -11,7 +17,9 @@ if (localizaciones.length === 0) {
         localizacion: [feed.field1, feed.field2],
         created_at: feed.created_at,
       }));
-      inicializarWidgetCalendario(getFechas(localizaciones));
-//      ON_ActualizarLocalizaciones(localizaciones);
+
+      const fechasAgrupadas = agruparFeedsPorFechas(localizaciones)
+      inicializarWidgetCalendario(fechasAgrupadas);
+      //      ON_ActualizarLocalizaciones(localizaciones);
     });
 }

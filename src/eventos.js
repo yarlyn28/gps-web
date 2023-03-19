@@ -1,5 +1,8 @@
+import { mostrarMapa } from "./mapa";
+
 let clean = null
-function ON_ActualizarLocalizaciones(localizaciones) {
+
+export function ON_ActualizarLocalizaciones(localizaciones) {
   if (clean !== null) {
     clean();
   }
