@@ -1,5 +1,6 @@
 import "./style.css";
 import "bootstrap"
+import "./src/iniciarFirebase"
 
 import { agruparFeedsPorFechas } from './src/fechasUtils'
 import { inicializarWidgetCalendario } from "./src/widgetCalendario";
