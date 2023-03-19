@@ -16,6 +16,7 @@ acercaLink.addEventListener("click", () => {
   if (paginaActual == "acerca") return;
 
   paginaActual = "acerca";
+  document.title = "GPS - Acerca"
   alternarVisibilidad();
 });
 
@@ -23,6 +24,7 @@ mapaLink.addEventListener("click", () => {
   if (paginaActual == "mapa") return;
 
   paginaActual = "mapa";
+  document.title = "GPS - Mapa"
   alternarVisibilidad();
 });
 
