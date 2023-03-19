@@ -1,149 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <base target="_top" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<head>
-  <base target="_top" />
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>IoT Posicionamiento Global</title>
 
-  <title>IoT Posicionamiento Global</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+      integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+      integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+      crossorigin=""
+    ></script>
+    <script
+      src="https://momentjs.com/downloads/moment.min.js"
+      crossorigin=""
+    ></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
-    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
-  <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
-    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
-  <script src="https://momentjs.com/downloads/moment.min.js" crossorigin=""></script>
-  <link rel="stylesheet" href="style.css">
-</head>
+  <body class="bg-body">
+    <div class="container-lg vh-100">
+      <div class="row h-100">
+        <aside
+          id="default-sidebar"
+          class="col-lg-3 d-flex flex-column p-3 text-bg-dark"
+          aria-label="Sidebar"
+        >
+          <navbar
+            class="d-flex flex-row justify-content-between flex-lg-column .justify-content-lg-start"
+          >
+            <header
+              class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"
+            >
+              <img src="./assets/img/logo.png" height="32" width="32" />
+              <span class="fs-4">Aplicación IoT</span>
+            </header>
+            <hr class="d-none d-lg-block" />
+            <ul class="nav nav-pills flex-lg-column mb-auto">
+              <li>
+                <a id="link-acerca" class="nav-link text-white" href="#">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-info-circle me-2"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
+                    />
+                    <path
+                      d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"
+                    />
+                  </svg>
+                  Acerca
+                </a>
+              </li>
+              <li>
+                <a id="link-mapa" class="nav-link text-white" href="#">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-map me-2"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M15.817.113A.5.5 0 0 1 16 .5v14a.5.5 0 0 1-.402.49l-5 1a.502.502 0 0 1-.196 0L5.5 15.01l-4.902.98A.5.5 0 0 1 0 15.5v-14a.5.5 0 0 1 .402-.49l5-1a.5.5 0 0 1 .196 0L10.5.99l4.902-.98a.5.5 0 0 1 .415.103zM10 1.91l-4-.8v12.98l4 .8V1.91zm1 12.98 4-.8V1.11l-4 .8v12.98zm-6-.8V1.11l-4 .8v12.98l4-.8z"
+                    />
+                  </svg>
+                  Mapa
+                </a>
+              </li>
+            </ul>
+          </navbar>
+          <hr id="plugin-mapa-separador" />
+          <div
+            id="plugin-mapa"
+            class="d-flex flex-row flex-lg-column align-items-center align-items-lg-stretch justify-content-center justify-content-lg-start gap-3"
+          >
+            <div
+              class="d-flex flex-column align-items-center align-items-lg-start mb-2"
+            >
+              <label for="select-year" class="form-label"> Año</label>
+              <select id="select-year" class="form-control"></select>
+            </div>
 
-<body class="bg-body">
-  <div class="container-lg vh-100">
-    <div class="row h-100">
-      <aside id="default-sidebar" class="col-lg-3 d-flex flex-column p-3 text-bg-dark" aria-label="Sidebar">
-        <navbar class="d-flex flex-row justify-content-between flex-lg-column .justify-content-lg-start">
-          <header class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-            <img src="./assets/img/logo.png" height="32" width="32" />
-            <span class="fs-4">Aplicación IoT</span>
-          </header>
-          <hr class="d-none d-lg-block">
-          <ul class="nav nav-pills flex-lg-column  mb-auto">
-            <li>
-              <a id="link-acerca" class="nav-link text-white" href="#">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                  class="bi bi-info-circle me-2" viewBox="0 0 16 16">
-                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                  <path
-                    d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
-                </svg>
-                Acerca
-              </a>
-            </li>
-            <li>
-              <a id="link-mapa" class="nav-link text-white" href="#">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                  class="bi bi-map me-2" viewBox="0 0 16 16">
-                  <path fill-rule="evenodd"
-                    d="M15.817.113A.5.5 0 0 1 16 .5v14a.5.5 0 0 1-.402.49l-5 1a.502.502 0 0 1-.196 0L5.5 15.01l-4.902.98A.5.5 0 0 1 0 15.5v-14a.5.5 0 0 1 .402-.49l5-1a.5.5 0 0 1 .196 0L10.5.99l4.902-.98a.5.5 0 0 1 .415.103zM10 1.91l-4-.8v12.98l4 .8V1.91zm1 12.98 4-.8V1.11l-4 .8v12.98zm-6-.8V1.11l-4 .8v12.98l4-.8z" />
-                </svg>
-                Mapa
-              </a>
-            </li>
-          </ul>
-        </navbar>
-        <hr id="plugin-mapa-separador">
-        <div id="plugin-mapa"
-          class="d-flex flex-row flex-lg-column align-items-center align-items-lg-stretch justify-content-center justify-content-lg-start gap-3">
-          <div class="d-flex flex-column align-items-center align-items-lg-start mb-2">
-            <label for="select-year" class="form-label">
-              Año</label>
-            <select id="select-year" class="form-control">
-            </select>
+            <div
+              class="d-flex flex-column align-items-center align-items-lg-start mb-2"
+            >
+              <label for="select-month" class="form-label"> Mes</label>
+              <select id="select-month" class="form-control"></select>
+            </div>
+            <div
+              class="d-flex flex-column align-items-center align-items-lg-start mb-2"
+            >
+              <label for="select-day" class="form-label"> Dia</label>
+              <select id="select-day" class="form-control"></select>
+            </div>
           </div>
-
-          <div class="d-flex flex-column align-items-center align-items-lg-start mb-2">
-            <label for="select-month" class="form-label">
-              Mes</label>
-            <select id="select-month" class="form-control">
-            </select>
+        </aside>
+        <main class="col-lg-9">
+          <div id="acerca" class="">
+            <h2>Proyecto de Geolocalización GPS</h2>
+            <p class="fs-5">
+              Bienvenidos al sitio web del proyecto de geolocalización GPS con
+              Arduino, SIM7000G NB-IoT HAT y ThingSpeak. Este proyecto fue
+              desarrollado como tesis universitaria por estudiantes de la
+              Universidad Experimental Politécnica Antonio José de Sucre
+              Vicerectorado Puerto Ordaz con el objetivo de crear un sistema
+              eficiente de seguimiento de vehículos y objetos en tiempo real.
+            </p>
+            <h3>Descripción del Proyecto</h3>
+            <p class="fs-5">
+              El proyecto se basa en el uso de Arduino como plataforma de
+              hardware y el módulo SIM7000G NB-IoT HAT para la comunicación de
+              datos a través de la red celular. La plataforma de IoT ThingSpeak
+              es utilizada para almacenar los datos y visualizarlos en tiempo
+              real en una interfaz amigable.
+              <br />
+              Nuestro sistema de geolocalización GPS utiliza señales satelitales
+              para determinar la ubicación exacta de los dispositivos equipados
+              con nuestro hardware, y envía esta información a la plataforma de
+              ThingSpeak para su procesamiento y visualización en tiempo real.
+              Además, nuestro sistema también puede ser programado para enviar
+              alertas en tiempo real cuando se detectan eventos específicos,
+              como la entrada o salida de un área designada.
+            </p>
+            <h3>Objetivos</h3>
+            <p class="fs-5">
+              El objetivo de este proyecto es proporcionar una solución
+              eficiente y fácil de usar para la geolocalización de vehículos y
+              objetos en tiempo real. Nuestro sistema tiene aplicaciones en una
+              amplia variedad de industrias, desde la logística hasta la
+              seguridad pública y la gestión de flotas.
+            </p>
           </div>
-          <div class="d-flex flex-column align-items-center align-items-lg-start mb-2">
-            <label for="select-day" class="form-label">
-              Dia</label>
-            <select id="select-day" class="form-control">
-            </select>
-          </div>
-        </div>
-      </aside>
-      <main class="col-lg-9">
-        <div id="acerca" class="">
-          <h2>Proyecto de Geolocalización GPS</h2>
-          <p class="fs-5">
-            Bienvenidos al sitio web del proyecto de geolocalización GPS con Arduino, SIM7000G NB-IoT HAT y ThingSpeak.
-            Este proyecto fue desarrollado como tesis universitaria por estudiantes de la Universidad Experimental
-            Politécnica Antonio José de Sucre Vicerectorado Puerto Ordaz con el objetivo de crear un sistema eficiente
-            de
-            seguimiento de vehículos y objetos en tiempo real.
-          </p>
-          <h3>
-            Descripción del Proyecto
-          </h3>
-          <p class="fs-5">
-            El proyecto se basa en el uso de Arduino como plataforma de hardware y el módulo SIM7000G NB-IoT HAT para la
-            comunicación de datos a través de la red celular. La plataforma de IoT ThingSpeak es utilizada para
-            almacenar
-            los datos y visualizarlos en tiempo real en una interfaz amigable.
-            <br />
-            Nuestro sistema de geolocalización GPS utiliza señales satelitales para determinar la ubicación
-            exacta de
-            los
-            dispositivos equipados con nuestro hardware, y envía esta información a la plataforma de ThingSpeak para su
-            procesamiento y visualización en tiempo real. Además, nuestro sistema también puede ser programado para
-            enviar
-            alertas en tiempo real cuando se detectan eventos específicos, como la entrada o salida de un área
-            designada.
-          </p>
-          <h3>
-            Objetivos
-          </h3>
-          <p class="fs-5">
-            El objetivo de este proyecto es proporcionar una solución eficiente y fácil de usar para la geolocalización
-            de
-            vehículos y objetos en tiempo real. Nuestro sistema tiene aplicaciones en una amplia variedad de industrias,
-            desde la logística hasta la seguridad pública y la gestión de flotas.
-          </p>
-        </div>
-        <div id="map" class=""></div>
-      </main>
+          <div id="map" class=""></div>
+        </main>
+      </div>
     </div>
-  </div>
 
-  <script src="main.js"></script>
-  <script src="src/mapa.js"></script>
-  <script src="src/eventos.js"></script>
-  <script src="src/widgetCalendario.js"></script>
-  <script src="src/navegacion.js"></script>
+    <script src="main.js"></script>
+    <script src="src/mapa.js"></script>
+    <script src="src/eventos.js"></script>
+    <script src="src/widgetCalendario.js"></script>
+    <script src="src/navegacion.js"></script>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-    crossorigin="anonymous"></script>
-</body>
-<style>
-  html,
-  body {
-    height: 100%;
-    margin: 0;
-  }
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+  <style>
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+    }
 
-  .leaflet-container {
-    height: 768px;
-    width: 768px;
-    max-width: 100%;
-    max-height: 100%;
-  }
-</style>
-
-
+    .leaflet-container {
+      height: 768px;
+      width: 768px;
+      max-width: 100%;
+      max-height: 100%;
+    }
+  </style>
 </html>
