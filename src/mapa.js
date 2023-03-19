@@ -3,8 +3,9 @@ function getFechas(localizaciones) {
   localizaciones.forEach((feed) => {
     const date = moment(feed.created_at);
     const año = date.year();
-    const mes = date.month();
+    const mes = date.month() + 1;
     const dia = date.date();
+    console.log({ date, año, mes });
 
     if (!feedsAgrupadas[año]) {
       feedsAgrupadas[año] = {};
@@ -38,12 +39,10 @@ function mostrarMapa(feeds) {
   map.fitBounds(polyline.getBounds());
 
   feeds.forEach((feed) => {
-    const fecha = moment(feed.created_at).local().format('YYYY-MM-DD HH:mm:ss')
+    const fecha = moment(feed.created_at).local().format("YYYY-MM-DD HH:mm:ss");
     L.marker(feed.localizacion)
       .addTo(map)
-      .bindPopup(
-        "<b><h2>Fecha y Hora</h2></b> <br>" + "<h3>" + fecha + "</h3>"
-      )
+      .bindPopup("<b><h2>Fecha y Hora</h2></b> <br>" + "<h3>" + fecha + "</h3>")
       .openPopup();
   });
 
@@ -65,7 +64,7 @@ function mostrarMapa(feeds) {
   }
 
   console.log({ map });
-  return cleanMap
+  return cleanMap;
 }
 
 function formatDate(dateStr) {
