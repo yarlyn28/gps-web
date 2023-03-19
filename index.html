@@ -46,7 +46,7 @@
               </a>
             </li>
             <li>
-              <a id="link-mapa" class="nav-link text-white" href="#">
+              <a id="link-mapa" class="nav-link text-white">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                   class="bi bi-map me-2" viewBox="0 0 16 16">
                   <path fill-rule="evenodd"
@@ -57,20 +57,28 @@
             </li>
           </ul>
         </navbar>
-        <div id="plugin-mapa">
-          <hr>
-          <label for="select-year" class="">Selecciona un
-            año</label>
-          <select id="select-year" class="">
-          </select>
-          <label for="select-month" class="">Selecciona un
-            mes</label>
-          <select id="select-month" class="">
-          </select>
-          <label for="select-day" class="">Selecciona un
-            dia</label>
-          <select id="select-day" class="">
-          </select>
+        <hr id="plugin-mapa-separador">
+        <div id="plugin-mapa"
+          class="d-flex flex-row flex-lg-column align-items-center align-items-lg-stretch justify-content-center justify-content-lg-start gap-3">
+          <div class="d-flex flex-column align-items-center align-items-lg-start mb-2">
+            <label for="select-year" class="form-label">
+              Año</label>
+            <select id="select-year" class="form-control">
+            </select>
+          </div>
+
+          <div class="d-flex flex-column align-items-center align-items-lg-start mb-2">
+            <label for="select-month" class="form-label">
+              Mes</label>
+            <select id="select-month" class="form-control">
+            </select>
+          </div>
+          <div class="d-flex flex-column align-items-center align-items-lg-start mb-2">
+            <label for="select-day" class="form-label">
+              Dia</label>
+            <select id="select-day" class="form-control">
+            </select>
+          </div>
         </div>
       </aside>
       <main class="col-lg-9">
