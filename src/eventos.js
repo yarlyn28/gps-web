@@ -4,5 +4,4 @@ function ON_ActualizarLocalizaciones(localizaciones) {
     clean();
   }
   clean = mostrarMapa(localizaciones);
-  console.log({ clean })
 }

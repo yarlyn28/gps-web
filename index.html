@@ -19,58 +19,44 @@
 </head>
 
 <body class="">
-  <div class="container">
-    <div class="row">
-      <aside id="default-sidebar" class="col-4 d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;"
-        aria-label="Sidebar">
-        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-          <svg class="bi pe-none me-2" width="40" height="32">
-          </svg>
+  <div class="container-lg vh-100">
+    <div class="row vh-100">
+      <aside id="default-sidebar" class="col-lg-4 flex flex-column flex-shrink-0 p-3 text-bg-dark height-100" aria-label="Sidebar">
+        <div class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
           <span class="fs-4">Aplicación IoT de posicionamiento GPS</span>
-        </a>
+        </div>
         <hr>
         <ul class="nav nav-pills flex-column mb-auto">
           <li>
-            <a href="#" class="nav-link text-white">
+            <div id="link-acerca" class="nav-link text-white">
 
               Acerca
-            </a>
+            </div>
           </li>
           <li>
-            <a href="#" class="nav-link text-white">
+            <div id="link-mapa" class="nav-link text-white">
               Mapa
-            </a>
+            </div>
           </li>
         </ul>
-        <hr>
-        <label for="select-year" class="">Selecciona un
-          año</label>
-        <select id="select-year" class="">
-        </select>
-        <label for="select-month" class="">Selecciona un
-          mes</label>
-        <select id="select-month" class="">
-        </select>
-        <label for="select-day" class="">Selecciona un
-          dia</label>
-        <select id="select-day" class="">
-        </select>
-
-        <hr>
-
-        <div class="dropdown">
-          <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
-            data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-            <strong>mdo</strong>
-          </a>
-          <ul class="dropdown-menu dropdown-menu-dark text-small shadow" style="">
-            <li><a class="dropdown-item" href="#">Sign out</a></li>
-          </ul>
+        <div id="plugin-mapa">
+          <hr>
+          <label for="select-year" class="">Selecciona un
+            año</label>
+          <select id="select-year" class="">
+          </select>
+          <label for="select-month" class="">Selecciona un
+            mes</label>
+          <select id="select-month" class="">
+          </select>
+          <label for="select-day" class="">Selecciona un
+            dia</label>
+          <select id="select-day" class="">
+          </select>
         </div>
       </aside>
-      <main class="col-8">
-        <div id="acerca">
+      <main class="col-lg-8">
+        <div id="acerca" class="">
           Bienvenidos al sitio web del proyecto de geolocalización GPS con Arduino, SIM7000G NB-IoT HAT y ThingSpeak.
           Este proyecto fue desarrollado como tesis universitaria por estudiantes de la Universidad Experimental
           Politécnica Antonio José de Sucre Vicerectorado Puerto Ordaz con el objetivo de crear un sistema eficiente de
@@ -89,13 +75,10 @@
           vehículos y objetos en tiempo real. Nuestro sistema tiene aplicaciones en una amplia variedad de industrias,
           desde la logística hasta la seguridad pública y la gestión de flotas.
         </div>
-        <div id="map" style=""></div>
+        <div id="map" class=""></div>
       </main>
     </div>
   </div>
-  <footer class="">
-    <h1 class="">Footer</h1>
-  </footer>
 
   <script src="main.js"></script>
   <script src="src/mapa.js"></script>

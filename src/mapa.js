@@ -62,7 +62,6 @@ function mostrarMapa(feeds) {
     map.clearAllEventListeners();
     map.off();
     map.remove();
-    console.log("cleaning?")
   }
 
   console.log({ map });
