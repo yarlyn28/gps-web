@@ -31,7 +31,6 @@ export function ON_Login({ nombre, imagen }) {
   usuarioTexto2.innerHTML = nombre
   usuarioImagen.src = null ?? urlNoProfile
   usuarioImagen2.src = null ?? urlNoProfile
-  console.log({nombre})
 }
 
 export function ON_Logout() {

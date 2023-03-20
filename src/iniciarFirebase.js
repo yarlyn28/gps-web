@@ -80,5 +80,7 @@ async function logout() {
   }
 }
 const signOutBotón = document.getElementById("bottom-sign-out");
-console.log({ signOutBotón });
 signOutBotón.addEventListener("click", logout);
+
+const signOutBotón2 = document.getElementById("bottom-sign-out-2");
+signOutBotón2.addEventListener("click", logout);
