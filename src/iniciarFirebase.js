@@ -52,7 +52,7 @@ const initApp = function () {
         var providerData = user.providerData;
 
         user.getIdToken().then(function (accessToken) {
-          ON_Login();
+          ON_Login({nombre: displayName, imagen: photoURL});
         });
       } else {
         // User is signed out.
