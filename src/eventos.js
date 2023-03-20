@@ -14,7 +14,7 @@ const paginaLogin = document.getElementById("login-page");
 const paginaApp = document.getElementById("app-page");
 
 paginaLogin.classList.add(OCULTAR);
-paginaApp.classList.add(OCULTAR);
+paginaApp.classList.remove(OCULTAR);
 
 export function ON_Login() {
   paginaLogin.classList.add(OCULTAR);
