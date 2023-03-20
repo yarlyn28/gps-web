@@ -2,6 +2,8 @@ import "firebaseui/dist/firebaseui.css";
 
 import * as firebaseui from "firebaseui";
 
+import { ON_Login, ON_Logout } from "./eventos";
+
 import firebase from "firebase/compat/app";
 import { initializeApp } from "firebase/app";
 
@@ -34,7 +36,7 @@ const initiateSignInUI = () => {
       },
     },
   });
-}
+};
 
 const initApp = function () {
   firebase.auth().onAuthStateChanged(
@@ -50,30 +52,13 @@ const initApp = function () {
         var providerData = user.providerData;
 
         user.getIdToken().then(function (accessToken) {
-          document.getElementById("sign-in-status").textContent = "Signed in";
-          document.getElementById("sign-in").textContent = "Sign out";
-          document.getElementById("account-details").textContent =
-            JSON.stringify(
-              {
-                displayName: displayName,
-                email: email,
-                emailVerified: emailVerified,
-                phoneNumber: phoneNumber,
-                photoURL: photoURL,
-                uid: uid,
-                accessToken: accessToken,
-                providerData: providerData,
-              },
-              null,
-              "  "
-            );
+          ON_Login();
         });
       } else {
         // User is signed out.
-        document.getElementById("sign-in-status").textContent = "Signed out";
-        document.getElementById("sign-in").textContent = "Sign in";
-        document.getElementById("account-details").textContent = "null";
-        initiateSignInUI()
+        ON_Logout();
+
+        initiateSignInUI();
       }
     },
     function (error) {
@@ -88,12 +73,12 @@ window.addEventListener("load", function () {
 
 async function logout() {
   try {
+    console.log("logout?");
     await firebase.auth().signOut();
   } catch (error) {
     console.log(error);
   }
 }
-
-const signInComponent = document.getElementById("sign-in");
-
-signInComponent.addEventListener("click", logout);
+const signOutBotón = document.getElementById("bottom-sign-out");
+console.log({ signOutBotón });
+signOutBotón.addEventListener("click", logout);

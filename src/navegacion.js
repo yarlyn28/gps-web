@@ -7,7 +7,7 @@ const mapa = document.getElementById("map");
 const acerca = document.getElementById("acerca");
 
 // Configuración Inicial
-const OCULTAR = "d-none";
+export const OCULTAR = "d-none";
 const ACTIVADO = "active";
 
 let paginaActual = "mapa";
