@@ -13,14 +13,15 @@ export function ON_ActualizarLocalizaciones(localizaciones) {
 const paginaLogin = document.getElementById("login-page");
 const paginaApp = document.getElementById("app-page");
 
-export function ON_Login() {
-  paginaLogin.classList.add(OCULTAR)
+paginaLogin.classList.add(OCULTAR);
+paginaApp.classList.add(OCULTAR);
 
-  paginaApp.classList.remove(OCULTAR)
+export function ON_Login() {
+  paginaLogin.classList.add(OCULTAR);
+  paginaApp.classList.remove(OCULTAR);
 }
 
 export function ON_Logout() {
-  paginaLogin.classList.remove(OCULTAR)
-
-  paginaApp.classList.add(OCULTAR)
+  paginaLogin.classList.remove(OCULTAR);
+  paginaApp.classList.add(OCULTAR);
 }
