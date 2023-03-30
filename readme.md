@@ -1,4 +1,4 @@
-# Proyecto de geoposicionamiento terrestre GPS con Arduino, SIM7000G NB-IoT HAT y ThingSpeak
+# SISTEMA DE GEOPOSICIONAMIENTO TERRESTRE MEDIANTE PLATAFORMA OPEN SOURCE
 
 Este proyecto de geoposicionamiento terrestre GPS fue desarrollado como tesis universitaria por estudiantes de la Universidad Experimental Politécnica Antonio José de Sucre Vicerectorado Puerto Ordaz. El objetivo del proyecto es crear un sistema eficiente de seguimiento de vehículos y objetos en tiempo real.
 
