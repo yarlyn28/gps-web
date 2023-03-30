@@ -3,7 +3,7 @@
 Este proyecto de geoposicionamiento terrestre GPS fue desarrollado como tesis universitaria por estudiantes de la Universidad Experimental Politécnica Antonio José de Sucre Vicerectorado Puerto Ordaz. El objetivo del proyecto es crear un sistema eficiente de seguimiento de vehículos y objetos en tiempo real.
 
 ## Pagina Web
-[Pagina Web](https://yarlyn28.github.io/gps-web/)
+[Pagina Web](https://tesis-arduino-gps-iot.web.app/)
 
 ## Descripción del Proyecto
 
