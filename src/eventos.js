@@ -2,13 +2,12 @@ import { OCULTAR } from "./navegacion";
 import { mostrarMapa } from "./mapa";
 import {actualizarWidgedMinutos} from "./widgetMinutos.js";
 
-let clean = null;
+export let cleanMapa = null;
 let localizacionesActuales;
 export function ON_ActualizarLocalizaciones(localizaciones) {
-  clean?.();
+  cleanMapa?.();
   localizacionesActuales = localizaciones;
-  clean = mostrarMapa(localizaciones);
-  actualizarWidgedMinutos(localizaciones)
+  cleanMapa = mostrarMapa(localizaciones);
 }
 
 const paginaLogin = document.getElementById("login-page");
@@ -36,6 +35,7 @@ export function ON_Login({ nombre, imagen }) {
 
   if (localizacionesActuales !== null) {
     ON_ActualizarLocalizaciones(localizacionesActuales)
+    actualizarWidgedMinutos(localizacionesActuales)
   }
 }
 

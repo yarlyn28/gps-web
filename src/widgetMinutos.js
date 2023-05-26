@@ -1,4 +1,6 @@
 import moment from "moment";
+import {mostrarMapa} from "./mapa.js";
+import {cleanMapa, ON_ActualizarLocalizaciones} from "./eventos.js";
 
 const controlDesde = document.getElementById('select-desde')
 const controlDesdeLabel = document.getElementById('select-desde-label')
@@ -54,5 +56,19 @@ export function actualizarWidgedMinutos(localizaciones) {
         actualizarLocalizaciones()
     })
 
-    function actualizarLocalizaciones() {}
+
+    function actualizarLocalizaciones() {
+        let localizacionesNuevas = []
+
+        for (let localizacion of localizaciones) {
+            let fechaPura = moment(localizacion.created_at)
+            let fechaFormateadaEnRango = +`${fechaPura.hours()}${fechaPura.minutes()}`
+            if (fechaFormateadaEnRango >= controlDesde.value && fechaFormateadaEnRango <= controlHasta.value) {
+                localizacionesNuevas.push(localizacion)
+            }
+        }
+
+        ON_ActualizarLocalizaciones(localizacionesNuevas)
+    }
 }
+
