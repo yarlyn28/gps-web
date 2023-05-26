@@ -1,6 +1,5 @@
 import moment from "moment";
-import {mostrarMapa} from "./mapa.js";
-import {cleanMapa, ON_ActualizarLocalizaciones} from "./eventos.js";
+import {ON_ActualizarLocalizaciones} from "./eventos.js";
 
 const controlDesde = document.getElementById('select-desde')
 const controlDesdeLabel = document.getElementById('select-desde-label')
@@ -9,7 +8,6 @@ const controlHasta = document.getElementById('select-hasta')
 const controlHastaLabel = document.getElementById('select-hasta-label')
 
 export function actualizarWidgedMinutos(localizaciones) {
-
     if (!localizaciones || localizaciones?.length === 0) {
         controlDesde.disabled = true
         controlHasta.disabled = true
@@ -25,6 +23,7 @@ export function actualizarWidgedMinutos(localizaciones) {
     controlDesde.min = `${desde.hour()}${desde.minutes()}`
     controlDesde.max = `${hasta.hour()}${hasta.minutes()}`
     controlDesde.step = 1
+    controlDesde.value = +`${desde.hour()}${desde.minutes()}`
 
     controlDesdeLabel.textContent = 'Desde: ' + desde.hours() + ":" + desde.minutes()
 
@@ -58,16 +57,21 @@ export function actualizarWidgedMinutos(localizaciones) {
 
 
     function actualizarLocalizaciones() {
+        if (!localizaciones) {
+            return;
+        }
         let localizacionesNuevas = []
 
         for (let localizacion of localizaciones) {
             let fechaPura = moment(localizacion.created_at)
             let fechaFormateadaEnRango = +`${fechaPura.hours()}${fechaPura.minutes()}`
+
             if (fechaFormateadaEnRango >= controlDesde.value && fechaFormateadaEnRango <= controlHasta.value) {
                 localizacionesNuevas.push(localizacion)
             }
         }
 
+        console.log({localizacionesNuevas})
         ON_ActualizarLocalizaciones(localizacionesNuevas)
     }
 }

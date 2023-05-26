@@ -2,6 +2,9 @@ import 'leaflet';
 import moment from 'moment';
 
 export function mostrarMapa(feeds) {
+  document.getElementById('map').innerHTML = null
+  if (!feeds || feeds.length === 0) return () =>{}
+
   const map = L.map("map", { center: feeds[0].localizacion });
 
   const tiles = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {

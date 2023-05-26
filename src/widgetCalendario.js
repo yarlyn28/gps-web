@@ -1,4 +1,5 @@
 import { ON_ActualizarLocalizaciones } from './eventos'
+import {actualizarWidgedMinutos} from "./widgetMinutos.js";
 
 export function inicializarWidgetCalendario(data) {
   const yearSelect = document.getElementById("select-year");
@@ -51,7 +52,9 @@ export function inicializarWidgetCalendario(data) {
     const dia = daySelect.value;
     const localizaciones = data[año][mes][dia];
     console.log("Fecha Seleccionada:", año, mes, dia, localizaciones);
+
     ON_ActualizarLocalizaciones(localizaciones);
+    actualizarWidgedMinutos(localizaciones)
   }
 
   daySelect.addEventListener("change", updateData);
