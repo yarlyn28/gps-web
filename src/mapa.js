@@ -1,4 +1,4 @@
-import leaflet from 'leaflet'
+import 'leaflet';
 import moment from 'moment';
 
 export function mostrarMapa(feeds) {

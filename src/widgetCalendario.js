@@ -59,3 +59,4 @@ export function inicializarWidgetCalendario(data) {
   // Initialize the month and day select options
   actualizarMeses();
 }
+

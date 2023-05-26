@@ -1,14 +1,14 @@
 import { OCULTAR } from "./navegacion";
 import { mostrarMapa } from "./mapa";
+import {actualizarWidgedMinutos} from "./widgetMinutos.js";
 
 let clean = null;
 let localizacionesActuales;
 export function ON_ActualizarLocalizaciones(localizaciones) {
-  if (clean !== null) {
-    clean();
-  }
+  clean?.();
   localizacionesActuales = localizaciones;
   clean = mostrarMapa(localizaciones);
+  actualizarWidgedMinutos(localizaciones)
 }
 
 const paginaLogin = document.getElementById("login-page");
