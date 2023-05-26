@@ -39,7 +39,6 @@ export function mostrarMapa(feeds) {
     map.remove();
   }
 
-  console.log({ map });
   return cleanMap;
 }
 
